@@ -1,0 +1,135 @@
+[
+    {
+        "id": "1f3d9c475d41d058",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e0f1329c127f7820",
+        "type": "arduino in",
+        "z": "1f3d9c475d41d058",
+        "name": "sensor",
+        "pin": "5",
+        "state": "INPUT",
+        "arduino": "c3087e6c5b0a90b8",
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [
+                "312e8bc2f1f0d918"
+            ]
+        ]
+    },
+    {
+        "id": "02f6c3c5abae456a",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "1f3d9c475d41d058",
+        "name": "mesntagem Vitass",
+        "account": "6927298f0b3b06a6",
+        "text": "payload",
+        "inputtypemessage": "msg",
+        "rejectssl": false,
+        "x": 470,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "312e8bc2f1f0d918",
+        "type": "function",
+        "z": "1f3d9c475d41d058",
+        "name": "",
+        "func": "msg.payload =\"movimento Detectado no cômodo X\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 280,
+        "wires": [
+            [
+                "4afd8c8ce2ff02ef"
+            ]
+        ]
+    },
+    {
+        "id": "4afd8c8ce2ff02ef",
+        "type": "mqtt out",
+        "z": "1f3d9c475d41d058",
+        "name": "",
+        "topic": "PDAControl",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d9076f0ba5face4e",
+        "x": 750,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "1c1f1b7592154603",
+        "type": "mqtt in",
+        "z": "1f3d9c475d41d058",
+        "name": "",
+        "topic": "PDAControl",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "d9076f0ba5face4e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "02f6c3c5abae456a"
+            ]
+        ]
+    },
+    {
+        "id": "c3087e6c5b0a90b8",
+        "type": "arduino-board",
+        "device": "COM5"
+    },
+    {
+        "id": "6927298f0b3b06a6",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": "Vitor De Sá Kechichian"
+    },
+    {
+        "id": "d9076f0ba5face4e",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "2",
+        "birthPayload": "movimento detectado",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]
